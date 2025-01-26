@@ -4,8 +4,10 @@ void vertex()
 {
 	if(VERTEX.y > 0.0)
 	{
-		VERTEX += vec2(-200, -50);
+		//VERTEX += vec2(-200, -50);
 	}
+
+	VERTEX += vec2(TIME)
 
 }
 

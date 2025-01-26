@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtwhv0coxnqgp"]
+[gd_scene load_steps=6 format=3 uid="uid://dtwhv0coxnqgp"]
 
 [ext_resource type="Shader" path="res://shaders/basic.gdshader" id="1_ke1je"]
+[ext_resource type="Script" path="res://scripts/shader_101.gd" id="1_xwdi2"]
 [ext_resource type="Texture2D" uid="uid://drtyf876rx425" path="res://icon.svg" id="2_1twr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8bvo5"]
@@ -10,6 +11,7 @@ shader = ExtResource("1_ke1je")
 shader = ExtResource("1_ke1je")
 
 [node name="Shaders101" type="Node2D"]
+script = ExtResource("1_xwdi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8bvo5")
