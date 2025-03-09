@@ -6,9 +6,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8bvo5"]
 shader = ExtResource("1_ke1je")
+shader_parameter/my_float = 0.0
+shader_parameter/my_int = 0
+shader_parameter/my_bool = false
+shader_parameter/my_color = Color(0.958812, 0.858585, 0.867334, 0.639216)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6xxf2"]
 shader = ExtResource("1_ke1je")
+shader_parameter/my_float = 0.0
+shader_parameter/my_int = 10
+shader_parameter/my_bool = false
+shader_parameter/my_color = Color(0, 0, 0, 1)
 
 [node name="Shaders101" type="Node2D"]
 script = ExtResource("1_xwdi2")
