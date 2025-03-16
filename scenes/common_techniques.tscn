@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0g8u1xcne512"]
+[gd_scene load_steps=16 format=3 uid="uid://0g8u1xcne512"]
 
 [ext_resource type="Script" path="res://scripts/common_techniques.gd" id="1_0ugy3"]
 [ext_resource type="Texture2D" uid="uid://dw27ks2iy6r18" path="res://assets/other/Terrain (16x16).png" id="2_4ntks"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4m2ljq1ynnik" path="res://assets/background/Brown.png" id="5_mfsxn"]
 [ext_resource type="Shader" uid="uid://cfu84fw00fe1n" path="res://shaders/grayscale.gdshader" id="6_kak6i"]
 [ext_resource type="Texture2D" uid="uid://b4cgytxlrs4ak" path="res://assets/other/End.png" id="6_mfsxn"]
+[ext_resource type="Shader" uid="uid://dehl70nd0idn8" path="res://scenes/map_to_gradient.gdshader" id="8_jqsh0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kak6i"]
 shader = ExtResource("4_xth1f")
@@ -176,6 +177,17 @@ sources/0 = SubResource("TileSetAtlasSource_sehxt")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqsh0"]
 shader = ExtResource("6_kak6i")
 
+[sub_resource type="Gradient" id="Gradient_jqsh0"]
+offsets = PackedFloat32Array(0.146597, 0.287958, 0.670157, 0.853403)
+colors = PackedColorArray(0, 0, 0, 1, 0.0581, 0.0392756, 0.016268, 1, 0.83, 0.56108, 0.2324, 1, 0.806529, 0.665716, 0.401107, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pqqsy"]
+gradient = SubResource("Gradient_jqsh0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqqsy"]
+shader = ExtResource("8_jqsh0")
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_pqqsy")
+
 [node name="CommonTechniques" type="Node2D"]
 script = ExtResource("1_0ugy3")
 
@@ -203,5 +215,11 @@ position = Vector2(575, 314)
 [node name="GrayScale" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_jqsh0")
 position = Vector2(80, 384)
+scale = Vector2(3, 3)
+texture = ExtResource("6_mfsxn")
+
+[node name="Gradient" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pqqsy")
+position = Vector2(452, 386)
 scale = Vector2(3, 3)
 texture = ExtResource("6_mfsxn")
