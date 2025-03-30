@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://b788b6b86c0qc"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ticyv"]
+[ext_resource type="Script" uid="uid://ddama2r23myn2" path="res://scripts/player.gd" id="1_ticyv"]
 [ext_resource type="Texture2D" uid="uid://crl8amfcmjsrx" path="res://assets/character/mask_dude/Idle (32x32).png" id="2_lbaly"]
 [ext_resource type="Shader" uid="uid://1x1a6e483f5s" path="res://shaders/flash_player.gdshader" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://14ay38m416a8" path="res://assets/character/mask_dude/Fall (32x32).png" id="2_v5u6i"]
@@ -205,6 +205,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o0ra8"]
 size = Vector2(38, 71)
 
+[sub_resource type="Animation" id="Animation_fjrip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_pct")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "flash"
 length = 1.2
@@ -219,21 +234,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.5, 0.0, 0.5, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_fjrip"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_pct")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_smehm"]

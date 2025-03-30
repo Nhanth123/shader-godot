@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://0g8u1xcne512"]
+[gd_scene load_steps=31 format=3 uid="uid://0g8u1xcne512"]
 
-[ext_resource type="Script" path="res://scripts/common_techniques.gd" id="1_0ugy3"]
+[ext_resource type="Script" uid="uid://fxfx1fx6gci4" path="res://scripts/common_techniques.gd" id="1_0ugy3"]
 [ext_resource type="Texture2D" uid="uid://dw27ks2iy6r18" path="res://assets/other/Terrain (16x16).png" id="2_4ntks"]
 [ext_resource type="PackedScene" uid="uid://b788b6b86c0qc" path="res://scenes/player.tscn" id="2_ttseq"]
 [ext_resource type="Shader" uid="uid://6j1wre055mow" path="res://shaders/scrolling_bg.gdshader" id="4_xth1f"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://14ay38m416a8" path="res://assets/character/mask_dude/Fall (32x32).png" id="10_luoof"]
 [ext_resource type="Shader" uid="uid://cotbjssyuwxlj" path="res://shaders/dissolve.gdshader" id="11_luoof"]
 [ext_resource type="Texture2D" uid="uid://jgyxm4826yuh" path="res://assets/other/Rock Head.png" id="12_ux0nb"]
+[ext_resource type="Shader" uid="uid://c0hfoo32qs08l" path="res://shaders/masking.gdshader" id="13_hyy88"]
+[ext_resource type="Texture2D" uid="uid://cy2v7a43pqpd8" path="res://assets/other/Spiked Ball.png" id="14_v7i2p"]
+[ext_resource type="Texture2D" uid="uid://drtyf876rx425" path="res://icon.svg" id="15_v7i2p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kak6i"]
 shader = ExtResource("4_xth1f")
@@ -206,6 +209,21 @@ shader = ExtResource("11_luoof")
 shader_parameter/noise_text = SubResource("NoiseTexture2D_hyy88")
 shader_parameter/dissolve_pct = 0.0
 
+[sub_resource type="Animation" id="Animation_hyy88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dissolve:material:shader_parameter/dissolve_pct")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_ux0nb"]
 resource_name = "new_animation"
 length = 1.5
@@ -223,26 +241,15 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_hyy88"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dissolve:material:shader_parameter/dissolve_pct")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_432xp"]
 _data = {
 &"RESET": SubResource("Animation_hyy88"),
 &"new_animation": SubResource("Animation_ux0nb")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_432xp"]
+shader = ExtResource("13_hyy88")
+shader_parameter/mask_text = ExtResource("14_v7i2p")
 
 [node name="CommonTechniques" type="Node2D"]
 script = ExtResource("1_0ugy3")
@@ -299,3 +306,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_432xp")
 }
 autoplay = "new_animation"
+
+[node name="Masking" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_432xp")
+position = Vector2(1042, 318)
+scale = Vector2(3, 3)
+texture = ExtResource("15_v7i2p")
