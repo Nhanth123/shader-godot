@@ -22,6 +22,26 @@ shader = ExtResource("4_xth1f")
 shader_parameter/tiling = Vector2(1, 1)
 shader_parameter/offset = Vector2(0.4, 0.4)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ir1eb"]
+frequency = 0.0198
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ir1eb"]
+seamless = true
+noise = SubResource("FastNoiseLite_ir1eb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ow30b"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow30b"]
+noise = SubResource("FastNoiseLite_ow30b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ow30b"]
+shader = ExtResource("16_ir1eb")
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_ir1eb")
+shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_ow30b")
+shader_parameter/distortion_strength = 0.025
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sehxt"]
 texture = ExtResource("2_4ntks")
 0:0/0 = 0
@@ -252,25 +272,6 @@ _data = {
 shader = ExtResource("13_hyy88")
 shader_parameter/mask_text = ExtResource("14_v7i2p")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ir1eb"]
-frequency = 0.0198
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ir1eb"]
-seamless = true
-noise = SubResource("FastNoiseLite_ir1eb")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ow30b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ow30b"]
-noise = SubResource("FastNoiseLite_ow30b")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ow30b"]
-shader = ExtResource("16_ir1eb")
-shader_parameter/offset1 = Vector2(0.1, 0.1)
-shader_parameter/offset2 = Vector2(0.2, 0.2)
-shader_parameter/noise_texture1 = SubResource("NoiseTexture2D_ir1eb")
-shader_parameter/noise_texture2 = SubResource("NoiseTexture2D_ow30b")
-
 [node name="CommonTechniques" type="Node2D"]
 script = ExtResource("1_0ugy3")
 
@@ -285,6 +286,16 @@ scale = Vector2(2.468, 1.483)
 texture = ExtResource("5_mfsxn")
 region_enabled = true
 region_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Distrortion" type="Sprite2D" parent="CanvasLayer2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ow30b")
+position = Vector2(320.563, 294.375)
+scale = Vector2(4.94434, 4.71289)
+texture = ExtResource("15_v7i2p")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(3, 3)
@@ -331,10 +342,4 @@ autoplay = "new_animation"
 material = SubResource("ShaderMaterial_432xp")
 position = Vector2(1042, 318)
 scale = Vector2(3, 3)
-texture = ExtResource("15_v7i2p")
-
-[node name="Distrortion" type="Sprite2D" parent="."]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_ow30b")
-position = Vector2(287, 160)
 texture = ExtResource("15_v7i2p")
