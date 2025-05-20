@@ -16,6 +16,7 @@ sky = SubResource("Sky_joj37")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ay5j"]
 render_priority = 0
 shader = ExtResource("3_8xyx0")
+shader_parameter/sphere_color = Color(1, 1, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_2nhy8"]
 material = SubResource("ShaderMaterial_3ay5j")
@@ -32,5 +33,6 @@ transform = Transform3D(0.80536, 0.463107, -0.370038, 0, 0.624234, 0.781237, 0.5
 [node name="CameraController" parent="." instance=ExtResource("1_p4cbf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.85299)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="SphereExample" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.551413, 0, 0, 0, 0.551413, 0, 0, 0, 0.551413, 0, 0, 0)
 mesh = SubResource("SphereMesh_2nhy8")
