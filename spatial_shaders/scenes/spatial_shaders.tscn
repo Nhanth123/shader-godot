@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://lg3n8vkn5qi4"]
+[gd_scene load_steps=13 format=3 uid="uid://lg3n8vkn5qi4"]
 
 [ext_resource type="Script" uid="uid://dh7m8qoaeg3pl" path="res://scripts/spatial_shaders.gd" id="1_db346"]
 [ext_resource type="PackedScene" uid="uid://twg0tri4g6hr" path="res://scenes/camera_controller.tscn" id="1_p4cbf"]
 [ext_resource type="Shader" uid="uid://bguswpeoh5vs5" path="res://shaders/101.gdshader" id="3_8xyx0"]
 [ext_resource type="Texture2D" uid="uid://dq50v6s4drwd1" path="res://icon.svg" id="4_3ay5j"]
+[ext_resource type="Shader" uid="uid://dpeonkc3u0q3x" path="res://shaders/pdr.gdshader" id="5_2nhy8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jfiy"]
 
@@ -23,6 +24,16 @@ shader_parameter/sphere_color = Color(1, 1, 1, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_2nhy8"]
 material = SubResource("ShaderMaterial_3ay5j")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lcdmc"]
+render_priority = 0
+shader = ExtResource("5_2nhy8")
+shader_parameter/albedo = Color(0.623529, 0, 0, 1)
+shader_parameter/metallic = 0.589
+shader_parameter/roughness = 0.798
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ay5j"]
+material = SubResource("ShaderMaterial_lcdmc")
+
 [node name="SpatialShaders" type="Node3D"]
 script = ExtResource("1_db346")
 
@@ -38,3 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.85299)
 [node name="SphereExample" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.551413, 0, 0, 0, 0.551413, 0, 0, 0, 0.551413, 0, 0, 0)
 mesh = SubResource("SphereMesh_2nhy8")
+
+[node name="SphereExample2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.551413, 0, 0, 0, 0.551413, 0, 0, 0, 0.551413, 1.77462, -0.406606, 1.51043)
+mesh = SubResource("SphereMesh_3ay5j")
