@@ -2,7 +2,7 @@ shader_type canvas_item;
 uniform sampler2D sampled_texture;
 
 void vertex() {
-	
+
 }
 
 void fragment() {
