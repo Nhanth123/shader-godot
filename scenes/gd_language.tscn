@@ -5,29 +5,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1kle"]
 shader = ExtResource("1_7yndf")
-shader_parameter/boolean = false
-shader_parameter/boolean_vec2 = 0
-shader_parameter/boolean_vec3 = 0
-shader_parameter/boolean_vec4 = 0
-shader_parameter/integer = 0
-shader_parameter/integer_vec2 = Vector2i(0, 0)
-shader_parameter/integer_vec3 = Vector3i(0, 0, 0)
-shader_parameter/integer_vec4 = Vector4i(0, 0, 0, 0)
-shader_parameter/unsigned_integer = 0
-shader_parameter/unsigned_integer_vec2 = Vector2i(0, 0)
-shader_parameter/unsigned_integer_vec3 = Vector3i(0, 0, 0)
-shader_parameter/unsigned_integer_vec4 = Vector4i(0, 0, 0, 0)
-shader_parameter/_float = 0.0
-shader_parameter/float_vec2 = Vector2(0, 0)
-shader_parameter/float_vec3 = Vector3(0, 0, 0)
-shader_parameter/float_vec4 = Vector4(0, 0, 0, 0)
-shader_parameter/matrix_2 = Transform2D(1, 0, 0, 1, 0, 0)
-shader_parameter/matrix_3 = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
-shader_parameter/u_visible = false
-shader_parameter/u_toggleEffects = 0
-shader_parameter/frame_index = 0
-shader_parameter/frame_amount = 1
-shader_parameter/color_scale = Vector3(1, 1, 1)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(287, 139)

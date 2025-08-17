@@ -57,7 +57,29 @@ uniform sampler2D u_texture;
 group_uniforms;
 
 void fragment() {
-	if (!u_visible){
+	if (!u_visible) {
 		discard;
 	}
+	
+	if (u_toggleEffects.x){
+		COLOR.r *=0.5;
+	}
+	if (u_toggleEffects.y){
+		COLOR.b *= 0.5;
+	}
+	
+	ivec4 holds_four_integers = ivec4(-2, -1, 0, 1);
+	uvec4 holds_four_untegers = uvec4(0,1,2,3);
+	vec2 frame_uv = UV;
+	frame_uv.x = (frame_uv.x+ float(frame_index));
+	
+	mat3 scale_matrix = mat3(
+		vec3(color_scale.r, 0.0, 0.0),
+		vec3(0.0, color_scale.g, 0.0),
+		vec3(0.0, 0.0, color_scale.b)
+	);
+	
+	COLOR = scale_matrix* COLOR.rgb;
+	
+	
 }
