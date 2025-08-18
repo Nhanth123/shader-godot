@@ -79,7 +79,7 @@ void fragment() {
 		vec3(0.0, 0.0, color_scale.b)
 	);
 	
-	COLOR = scale_matrix* COLOR.rgb;
+	COLOR.rgb = scale_matrix * COLOR.rgb;
 	
 	
 }

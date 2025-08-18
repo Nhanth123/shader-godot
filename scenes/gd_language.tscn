@@ -1,10 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnm3ecvrcjkcg"]
+[gd_scene load_steps=7 format=3 uid="uid://dnm3ecvrcjkcg"]
 
 [ext_resource type="Shader" uid="uid://co3a0aon8owy4" path="res://scenes/gd_language.gdshader" id="1_7yndf"]
 [ext_resource type="Texture2D" uid="uid://sqeu1rgc7w06" path="res://assets/character/virtual_guy/Fall (32x32).png" id="2_hcn2j"]
+[ext_resource type="Texture2D" uid="uid://b12ugclkgiwh5" path="res://assets/character/astronaut.jpg" id="3_hcn2j"]
+[ext_resource type="Shader" uid="uid://402smb8xi6xi" path="res://scenes/gd_language_array.gdshader" id="3_n1kle"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1kle"]
 shader = ExtResource("1_7yndf")
+shader_parameter/boolean = false
+shader_parameter/boolean_vec2 = 0
+shader_parameter/boolean_vec3 = 0
+shader_parameter/boolean_vec4 = 0
+shader_parameter/integer = 0
+shader_parameter/integer_vec2 = Vector2i(0, 0)
+shader_parameter/integer_vec3 = Vector3i(0, 0, 0)
+shader_parameter/integer_vec4 = Vector4i(0, 0, 0, 0)
+shader_parameter/unsigned_integer = 0
+shader_parameter/unsigned_integer_vec2 = Vector2i(0, 0)
+shader_parameter/unsigned_integer_vec3 = Vector3i(0, 0, 0)
+shader_parameter/unsigned_integer_vec4 = Vector4i(0, 0, 0, 0)
+shader_parameter/_float = 0.0
+shader_parameter/float_vec2 = Vector2(0, 0)
+shader_parameter/float_vec3 = Vector3(0, 0, 0)
+shader_parameter/float_vec4 = Vector4(0, 0, 0, 0)
+shader_parameter/matrix_2 = Transform2D(1, 0, 0, 1, 0, 0)
+shader_parameter/matrix_3 = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader_parameter/u_visible = true
+shader_parameter/u_toggleEffects = 0
+shader_parameter/frame_index = 0
+shader_parameter/frame_amount = 1
+shader_parameter/color_scale = Vector3(1.231, 33.906, 11)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_owu0x"]
+shader = ExtResource("3_n1kle")
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(287, 139)
@@ -12,3 +40,9 @@ position = Vector2(287, 139)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n1kle")
 texture = ExtResource("2_hcn2j")
+
+[node name="GDlanguagearray" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_owu0x")
+position = Vector2(599, 342)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_hcn2j")
