@@ -39,10 +39,11 @@ position = Vector2(287, 139)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n1kle")
+scale = Vector2(2, 2)
 texture = ExtResource("2_hcn2j")
 
 [node name="GDlanguagearray" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_owu0x")
 position = Vector2(599, 342)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_hcn2j")
