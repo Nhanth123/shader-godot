@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqsl7kjxf83r6"]
+[gd_scene load_steps=5 format=3 uid="uid://cqsl7kjxf83r6"]
 
 [ext_resource type="Shader" uid="uid://2tkeigd21o3g" path="res://scenes/debug_shader.gdshader" id="1_jcg6k"]
 [ext_resource type="Texture2D" uid="uid://cealdlq531836" path="res://assets/character/ninja_frog.png" id="1_unvcu"]
+[ext_resource type="Script" uid="uid://bsaf4mkebhl0w" path="res://scenes/label.gd" id="3_bvv1w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bvv1w"]
 shader = ExtResource("1_jcg6k")
@@ -10,6 +11,14 @@ shader = ExtResource("1_jcg6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bvv1w")
-position = Vector2(214, 99)
+position = Vector2(751, 454)
 scale = Vector2(2, 2)
 texture = ExtResource("1_unvcu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 169.0
+offset_top = 278.0
+offset_right = 209.0
+offset_bottom = 301.0
+text = "FPS:"
+script = ExtResource("3_bvv1w")

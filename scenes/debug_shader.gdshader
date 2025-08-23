@@ -17,4 +17,7 @@ void fragment() {
 	if (UV.x > 0.5){
 		COLOR.rgb = vec3(1.0, 0.0, 0.0);
 	}
+	
+	COLOR.rgb = mix(ar, COLOR.rgb, 0.5);
+	
 }
