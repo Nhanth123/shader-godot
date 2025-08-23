@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqsl7kjxf83r6"]
+
+[ext_resource type="Shader" uid="uid://2tkeigd21o3g" path="res://scenes/debug_shader.gdshader" id="1_jcg6k"]
+[ext_resource type="Texture2D" uid="uid://cealdlq531836" path="res://assets/character/ninja_frog.png" id="1_unvcu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvv1w"]
+shader = ExtResource("1_jcg6k")
+
+[node name="DebugShader" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bvv1w")
+position = Vector2(214, 99)
+scale = Vector2(2, 2)
+texture = ExtResource("1_unvcu")
