@@ -1,0 +1,40 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=5 format=3 uid="uid://clu24op88todb"]
+
+[sub_resource type="Curve" id="Curve_bsm8l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.954301, 0.985761), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0nlie"]
+curve = SubResource("Curve_bsm8l")
+
+[sub_resource type="Curve" id="Curve_2eelc"]
+min_value = 9.99
+max_value = 100.0
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1e-05, 33.9959), 0.0, 0.0, 0, 0, Vector2(0.370968, 9.99), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_upbut"]
+curve = SubResource("Curve_2eelc")
+
+[resource]
+resource_local_to_scene = true
+lifetime_randomness = 0.6
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(100, 100, 100)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 1.4988e-14
+angular_velocity_max = 10.0
+radial_velocity_min = 1000.0
+radial_velocity_max = 1000.0
+radial_velocity_curve = SubResource("CurveTexture_0nlie")
+velocity_limit_curve = SubResource("CurveTexture_upbut")
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+anim_offset_max = 1.0

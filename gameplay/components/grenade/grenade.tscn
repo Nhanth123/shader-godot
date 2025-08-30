@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://nlow2gqujttq"]
+
+[ext_resource type="Texture2D" uid="uid://cglh04i410ajj" path="res://components/grenade/grenades_by_mtk.png" id="2_3d5y3"]
+[ext_resource type="Script" path="res://components/grenade/grenade.gd" id="3_h2e2e"]
+
+[sub_resource type="Animation" id="Animation_71em7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3yrxf"]
+resource_name = "THROW"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw6ny"]
+_data = {
+"RESET": SubResource("Animation_71em7"),
+"THROW": SubResource("Animation_3yrxf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6tev"]
+radius = 178.256
+
+[node name="Grenade" type="Sprite2D"]
+z_index = 20
+position = Vector2(21, 24)
+scale = Vector2(2, 2)
+texture = ExtResource("2_3d5y3")
+centered = false
+offset = Vector2(-7.272, -7.79016)
+hframes = 8
+vframes = 4
+frame = 17
+script = ExtResource("3_h2e2e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dw6ny")
+}
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+scale = Vector2(0.780001, 0.7)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_s6tev")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.32549)
+show_behind_parent = true
+position = Vector2(3.5, 4)
+scale = Vector2(1.06, 1.06)
+skew = 0.5044
+texture = ExtResource("2_3d5y3")
+hframes = 8
+vframes = 4
+frame = 17
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

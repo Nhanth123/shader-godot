@@ -1,0 +1,284 @@
+[gd_scene load_steps=27 format=3 uid="uid://doc2etj1308nk"]
+
+[ext_resource type="Script" path="res://characters/heroes/billy/Hero.gd" id="1_fji5x"]
+[ext_resource type="Texture2D" uid="uid://bb3efp3pyrto6" path="res://characters/heroes/billy/test-square.png" id="2_6ue5p"]
+[ext_resource type="Texture2D" uid="uid://v4rbf8mdq1c1" path="res://characters/heroes/billy/hero.png" id="2_cumnm"]
+[ext_resource type="Texture2D" uid="uid://bpeee0taepbdw" path="res://characters/heroes/billy/bar.png" id="5_llhvx"]
+[ext_resource type="PackedScene" uid="uid://dnjvakx7j035q" path="res://components/mist/mist.tscn" id="6_2w0p2"]
+[ext_resource type="Texture2D" uid="uid://c66yn456wmmtt" path="res://characters/heroes/billy/health_bar/healthbar.png" id="6_ixo4p"]
+[ext_resource type="Texture2D" uid="uid://cqn3ybu8i5km5" path="res://characters/heroes/billy/button_circle/grenade.svg" id="7_567hk"]
+[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://characters/heroes/billy/light-texture.png" id="8_3j3cb"]
+[ext_resource type="Texture2D" uid="uid://datxfj471w2nj" path="res://characters/heroes/billy/fireshot.png" id="8_6tb7n"]
+[ext_resource type="Texture2D" uid="uid://bfo7yl10fqvfb" path="res://characters/heroes/billy/button_circle/grenade_pressed.svg" id="8_ja7rv"]
+[ext_resource type="Texture2D" uid="uid://dg7gkc0xdqscx" path="res://characters/heroes/billy/button_circle/glow-circle.svg" id="9_ugj7y"]
+[ext_resource type="Texture2D" uid="uid://cosa2ihadrvg7" path="res://characters/heroes/billy/button_circle/health-pack-button-icon.svg" id="10_pi1a7"]
+[ext_resource type="Texture2D" uid="uid://bw2ueaad78nh4" path="res://characters/heroes/billy/button_circle/rifle-button-icon.svg" id="11_h8oor"]
+[ext_resource type="Texture2D" uid="uid://b2tmsy45omgfx" path="res://characters/heroes/billy/hitpoints_100.png" id="15_mqlkb"]
+[ext_resource type="Texture2D" uid="uid://bf288y53irvof" path="res://characters/heroes/billy/hitpoints_50.png" id="16_bnvnb"]
+[ext_resource type="Texture2D" uid="uid://cjwguinwknk6m" path="res://characters/heroes/billy/hitpoints_1.png" id="17_oqr8j"]
+[ext_resource type="Script" path="res://characters/heroes/billy/Camera2D.gd" id="17_vdfvm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61ks4"]
+radius = 73.171
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_u4n8g"]
+polygon = PackedVector2Array(-31, -229, -42, -257, -78, -263, -103, -243, -88, -223, -71, -215, -54, -214, -42, -198)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thrxk"]
+resource_local_to_scene = true
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2v41h"]
+radius = 85.3756
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8th21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjruw"]
+
+[sub_resource type="Animation" id="Animation_med64"]
+resource_name = "IS_SHOOTING"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero/Fireshot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_eebmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero/Fireshot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcjqx"]
+_data = {
+"IS_SHOOTING": SubResource("Animation_med64"),
+"RESET": SubResource("Animation_eebmt")
+}
+
+[node name="Hero" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_fji5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_61ks4")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(224, -64)
+rotation = -1.5708
+occluder = SubResource("OccluderPolygon2D_u4n8g")
+
+[node name="Screenshot2023-12-05At17_08_24" type="Sprite2D" parent="LightOccluder2D"]
+visible = false
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
+position = Vector2(-65.9993, -183)
+rotation = 1.5708
+scale = Vector2(3.24, 2.08)
+texture = ExtResource("2_6ue5p")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0.0862745)
+position = Vector2(10, 8)
+rotation = 1.5708
+scale = Vector2(0.805, 0.805)
+skew = 0.176278
+texture = ExtResource("2_cumnm")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Fireshot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(70, -3)
+rotation = 1.5708
+texture = ExtResource("8_6tb7n")
+
+[node name="ShootingRange" type="Area2D" parent="."]
+visible = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingRange"]
+shape = SubResource("CircleShape2D_thrxk")
+
+[node name="TakeDamageArea" type="Area2D" parent="."]
+visible = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageArea"]
+shape = SubResource("CircleShape2D_2v41h")
+
+[node name="TakeAndGiveDamageTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Mist" parent="CanvasLayer" node_paths=PackedStringArray("camera") instance=ExtResource("6_2w0p2")]
+visible = false
+camera = NodePath("../../Camera2D")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginHealthbar" type="MarginContainer" parent="CanvasLayer/Control/VContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VContainer/MarginHealthbar"]
+layout_mode = 2
+size_flags_horizontal = 0
+value = 100.0
+texture_under = ExtResource("5_llhvx")
+texture_progress = ExtResource("6_ixo4p")
+
+[node name="MarginAbilities" type="MarginContainer" parent="CanvasLayer/Control/VContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VContainer/MarginAbilities"]
+layout_mode = 2
+
+[node name="MarginGrendade" type="MarginContainer" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ButtonGrenade" type="TextureButton" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginGrendade"]
+material = SubResource("ShaderMaterial_8th21")
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+texture_normal = ExtResource("7_567hk")
+texture_pressed = ExtResource("8_ja7rv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GlowVFX2" type="TextureRect" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginGrendade"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_ugj7y")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_pi1a7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GlowVFX3" type="TextureRect" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_ugj7y")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="NightVisionRifle" type="TextureButton" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+texture_normal = ExtResource("11_h8oor")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="GlowVFX4" type="TextureRect" parent="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_ugj7y")
+expand_mode = 1
+
+[node name="HeroSprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pjruw")
+position = Vector2(4, -2)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_cumnm")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_rcjqx")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -1400
+limit_top = -900
+limit_right = 1900
+limit_bottom = 1100
+position_smoothing_speed = 20.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+script = ExtResource("17_vdfvm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(31, -4)
+rotation = -1.5708
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("8_3j3cb")
+offset = Vector2(-3.4473, 149.476)
+
+[node name="Screenshot2024-02-29At16_28_08" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-56, -176)
+texture = ExtResource("15_mqlkb")
+
+[node name="Screenshot2024-02-29At16_28_26" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(88, -184)
+texture = ExtResource("16_bnvnb")
+
+[node name="Screenshot2024-02-29At16_28_41" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(232, -184)
+texture = ExtResource("17_oqr8j")
+
+[connection signal="timeout" from="TakeAndGiveDamageTimer" to="." method="_on_take_damage_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginGrendade/ButtonGrenade" to="." method="_on_button_grenade_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VContainer/MarginAbilities/HBoxContainer/MarginContainer/NightVisionRifle" to="." method="_on_night_vision_rifle_pressed"]

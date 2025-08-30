@@ -1,0 +1,156 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2f2s2t86achc"]
+
+[ext_resource type="Script" path="res://characters/enemies/zombie_walker/zombie.gd" id="1_er43f"]
+[ext_resource type="Texture2D" uid="uid://bq0xuwge1mgjp" path="res://characters/enemies/zombie_walker/white-zombie.png" id="3_51gh1"]
+[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://characters/heroes/billy/blood.png" id="4_5e1gn"]
+[ext_resource type="Texture2D" uid="uid://bx5namjixotjt" path="res://characters/enemies/zombie_walker/WhiteZombieNormalMap.png" id="6_sq1ov"]
+[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://characters/heroes/billy/light-texture.png" id="12_43yu3"]
+
+[sub_resource type="Gradient" id="Gradient_u2ok4"]
+colors = PackedColorArray(0.337255, 0, 0.25098, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8x45p"]
+gradient = SubResource("Gradient_u2ok4")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdhon"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h3a7t"]
+polygon = PackedVector2Array(-16, -21, -29, -11, -30, 13, -20, 25, -3, 26, 5, 7, 2, -10)
+
+[sub_resource type="Animation" id="Animation_7ugqe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ZombieSprite2D:material:shader_parameter/flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mp153"]
+resource_name = "flash_hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ZombieSprite2D:material:shader_parameter/flash")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm74i"]
+_data = {
+"RESET": SubResource("Animation_7ugqe"),
+"flash_hit": SubResource("Animation_mp153")
+}
+
+[sub_resource type="Gradient" id="Gradient_h3rrs"]
+offsets = PackedFloat32Array(0, 0.612903, 1)
+colors = PackedColorArray(0.619433, 0.0133027, 0.513231, 1, 0.466667, 0.207843, 0.427451, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gcy0o"]
+gradient = SubResource("Gradient_h3rrs")
+
+[sub_resource type="Curve" id="Curve_oxowq"]
+max_value = 100.0
+_data = [Vector2(0, 3.80531), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dqu3n"]
+curve = SubResource("Curve_oxowq")
+
+[sub_resource type="Curve" id="Curve_m8k34"]
+_data = [Vector2(0, 0.855752), 0.0, 0.0, 0, 0, Vector2(1, 0.675221), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wdvja"]
+curve = SubResource("Curve_m8k34")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_agvya"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 1)
+spread = 171.0
+initial_velocity_min = 66.66
+initial_velocity_max = 183.33
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("CurveTexture_dqu3n")
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_wdvja")
+color = Color(0.670588, 0, 0.670588, 1)
+color_ramp = SubResource("GradientTexture1D_gcy0o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w03rg"]
+resource_local_to_scene = true
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cfwnu"]
+diffuse_texture = ExtResource("3_51gh1")
+normal_texture = ExtResource("6_sq1ov")
+
+[node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
+rotation = 1.5708
+script = ExtResource("1_er43f")
+
+[node name="Screenshot2024-03-12At08_20_24" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-0.0267944, 3.99991)
+scale = Vector2(7.72938, 4.29271)
+texture = SubResource("GradientTexture2D_8x45p")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Screenshot2024-03-12At08_20_24"]
+visible = false
+position = Vector2(28.0775, -0.593238)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xdhon")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_h3a7t")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.45098)
+rotation = 1.5708
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("3_51gh1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qm74i")
+}
+
+[node name="BloodSmall" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_agvya")
+texture = ExtResource("4_5e1gn")
+one_shot = true
+explosiveness = 0.65
+randomness = 0.86
+
+[node name="ZombieSprite2D" type="Sprite2D" parent="." groups=["zombie"]]
+z_index = 1
+material = SubResource("ShaderMaterial_w03rg")
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+texture = SubResource("CanvasTexture_cfwnu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture = ExtResource("12_43yu3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-0.999978, -0.00669728)
+zoom = Vector2(4.305, 4.305)

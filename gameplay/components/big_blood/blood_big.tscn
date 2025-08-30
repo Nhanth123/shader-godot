@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5tykcnopcbkj"]
+
+[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://characters/heroes/billy/blood.png" id="1_h8jyc"]
+
+[sub_resource type="Gradient" id="Gradient_h3rrs"]
+offsets = PackedFloat32Array(0, 0.612903, 1)
+colors = PackedColorArray(0.895632, 0.0958893, 0.747264, 1, 0.611559, 0.294552, 0.562394, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gcy0o"]
+gradient = SubResource("Gradient_h3rrs")
+
+[sub_resource type="Curve" id="Curve_oxowq"]
+max_value = 100.0
+_data = [Vector2(0, 3.80531), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dqu3n"]
+curve = SubResource("Curve_oxowq")
+
+[sub_resource type="Curve" id="Curve_m8k34"]
+_data = [Vector2(0, 0.855752), 0.0, 0.0, 0, 0, Vector2(1, 0.675221), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wdvja"]
+curve = SubResource("Curve_m8k34")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ys3r"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 1)
+spread = 180.0
+flatness = 0.55
+initial_velocity_min = 66.66
+initial_velocity_max = 183.33
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+damping_min = 63.333
+damping_max = 100.0
+damping_curve = SubResource("CurveTexture_dqu3n")
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_wdvja")
+color = Color(0.670588, 0, 0.670588, 0.513726)
+color_ramp = SubResource("GradientTexture1D_gcy0o")
+
+[node name="bloodBig" type="GPUParticles2D"]
+z_as_relative = false
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_7ys3r")
+texture = ExtResource("1_h8jyc")
+lifetime = 20.35
+one_shot = true
+explosiveness = 1.0
+randomness = 0.31

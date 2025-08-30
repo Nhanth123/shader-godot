@@ -1,11 +1,15 @@
 shader_type canvas_item;
 
+#define DEBUG_MODE_ON
+
 uniform sampler2D arrow;
 
 void vertex() {
 	VERTEX *= 1.0 + abs(sin(UV.y * TIME));
 	VERTEX.x += UV.y * 2.0 + float(VERTEX_ID) * sin(TIME * 5.0) * 10.0;
-	VERTEX = -vec2(128.0 / 10.0 + cos(TIME) * VERTEX.x + sin(TIME) * VERTEX.y, 128.0 / 10.0 + sin(TIME) * VERTEX.x + -cos(TIME) * VERTEX.y);
+	
+	float frac_text_height = 128.0 / 10.0; 
+	VERTEX = -vec2(frac_text_height + cos(TIME) * VERTEX.x + sin(TIME) * VERTEX.y, frac_text_height + sin(TIME) * VERTEX.x + -cos(TIME) * VERTEX.y);
 }
 
 void fragment() {

@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://chkfyb7kk84mh"]
+
+[ext_resource type="Shader" path="res://characters/heroes/billy/effects/hero_body_explosion/hero_body_explode.gdshader" id="1_7h2an"]
+[ext_resource type="Texture2D" uid="uid://duogwpb2ewc2j" path="res://characters/enemies/zombie_walker/zombie.png" id="1_elmk5"]
+[ext_resource type="Material" uid="uid://clu24op88todb" path="res://characters/enemies/zombie_walker/effects/zombie_body_explode/zombie_body_explode.tres" id="2_m2xpe"]
+
+[sub_resource type="Gradient" id="Gradient_n4j8b"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iukco"]
+noise_type = 0
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q117q"]
+seamless = true
+color_ramp = SubResource("Gradient_n4j8b")
+noise = SubResource("FastNoiseLite_iukco")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btfjn"]
+shader = ExtResource("1_7h2an")
+shader_parameter/particles_anim_h_frames = 4
+shader_parameter/particles_anim_v_frames = 4
+shader_parameter/noise = SubResource("NoiseTexture2D_q117q")
+
+[node name="BodyExplode" type="GPUParticles2D"]
+material = SubResource("ShaderMaterial_btfjn")
+position = Vector2(-3.00001, -2)
+emitting = false
+process_material = ExtResource("2_m2xpe")
+texture = ExtResource("1_elmk5")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.53
