@@ -3,8 +3,8 @@ extends CharacterBody2D
 var magnitude = 100
 var target_hero: CharacterBody2D
 @onready var zombieSprite: Sprite2D = $ZombieSprite2D
-@onready var BloodBig = preload("res://components/big_blood/blood_big.tscn")	
-@onready var ZombieBodyExplode = preload("res://characters/enemies/zombie_walker/effects/zombie_body_explode/zombie_body_explode.tscn")	
+@onready var BloodBig = preload("res://gameplay/components/big_blood/blood_big.tscn")	
+@onready var ZombieBodyExplode = preload("res://gameplay/characters/enemies/zombie_walker/effects/zombie_body_explode/zombie_body_explode.tscn")	
 @onready var lightOccluder2D: LightOccluder2D = $LightOccluder2D
 @onready var shadow: Sprite2D = $Shadow;
 @onready var animation_player: AnimationPlayer = $AnimationPlayer;
