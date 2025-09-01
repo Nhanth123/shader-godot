@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="101"
-run/main_scene="uid://cqsl7kjxf83r6"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="res://gameplay/characters/enemies/zombie_walker/zombie.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]

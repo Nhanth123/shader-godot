@@ -30,7 +30,7 @@ var hitpoints = 40.0:
 			 #queue_free() # remove when enabling zombie_dies
 		else:
 			# take damage shader
-			#animation_player.play("flash_hit")
+			animation_player.play("flash_hit")
 			blood_small.emitting = true
 			
 		damage_effect()			
@@ -74,7 +74,7 @@ func zombie_dies(free = false, big = false):
 	bloodBig.global_position = global_position
 	bloodBig.emitting = true
 	
-	ShaderService.zombie_died.emit(global_position)
+	#ShaderService.zombie_died.emit(global_position)
 	
 	if free:
 		queue_free()
