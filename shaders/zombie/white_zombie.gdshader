@@ -10,6 +10,9 @@ uniform vec3 flash_color: source_color;
 
 group_uniforms;
 
+void vertex() {
+	VERTEX *= TIME / 10.0 ;
+}
 
 
 void flash_on_hit(inout vec3 c) {
