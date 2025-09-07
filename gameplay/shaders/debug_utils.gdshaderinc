@@ -1,4 +1,4 @@
-//#define DEBUG_MODE_ON;
+#define DEBUG_MODE_ON;
 
 // The complete file will be empty when we comment out DEBUG_MODE_ON
 #ifdef DEBUG_MODE_ON

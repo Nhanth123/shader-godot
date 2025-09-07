@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnjvakx7j035q"]
 
-[ext_resource type="Script" path="res://components/mist/mist.gd" id="2_kkfmm"]
+[sub_resource type="Resource" id="Resource_8wkxl"]
+metadata/__load_path__ = "res://components/mist/mist.gd"
 
 [node name="Mist" type="TextureRect"]
 z_index = 1
@@ -10,4 +11,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_kkfmm")
+script = SubResource("Resource_8wkxl")

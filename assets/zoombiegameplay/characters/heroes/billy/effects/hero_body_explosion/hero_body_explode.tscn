@@ -1,22 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhk7fxdsiurrc"]
+[gd_scene load_steps=4 format=3 uid="uid://bhk7fxdsiurrc"]
 
-[ext_resource type="Texture2D" uid="uid://v4rbf8mdq1c1" path="res://characters/heroes/billy/hero.png" id="1_8pxgn"]
-[ext_resource type="Shader" path="res://characters/heroes/billy/effects/hero_body_explosion/hero_body_explode.gdshader" id="1_fnfu7"]
-[ext_resource type="Material" uid="uid://cba7e3p2o4d0g" path="res://characters/heroes/billy/effects/hero_body_explosion/hero_body_explode.tres" id="2_ets28"]
-
-[sub_resource type="Gradient" id="Gradient_m2jn5"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_6qjsb"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mh806"]
-color_ramp = SubResource("Gradient_m2jn5")
-noise = SubResource("FastNoiseLite_6qjsb")
+[ext_resource type="Texture2D" uid="uid://v4rbf8mdq1c1" path="res://gameplay/characters/heroes/billy/hero.png" id="1_8pxgn"]
+[ext_resource type="Material" uid="uid://cba7e3p2o4d0g" path="res://gameplay/characters/heroes/billy/effects/hero_body_explosion/hero_body_explode.tres" id="2_ets28"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ioxyn"]
-shader = ExtResource("1_fnfu7")
-shader_parameter/particles_anim_h_frames = 3
-shader_parameter/particles_anim_v_frames = 3
-shader_parameter/noise = SubResource("NoiseTexture2D_mh806")
 
 [node name="BodyExplode" type="GPUParticles2D"]
 material = SubResource("ShaderMaterial_ioxyn")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b5tykcnopcbkj"]
 
-[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://characters/heroes/billy/blood.png" id="1_h8jyc"]
+[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://gameplay/characters/heroes/billy/blood.png" id="1_h8jyc"]
 
 [sub_resource type="Gradient" id="Gradient_h3rrs"]
 offsets = PackedFloat32Array(0, 0.612903, 1)
@@ -10,7 +10,7 @@ colors = PackedColorArray(0.895632, 0.0958893, 0.747264, 1, 0.611559, 0.294552, 
 gradient = SubResource("Gradient_h3rrs")
 
 [sub_resource type="Curve" id="Curve_oxowq"]
-max_value = 100.0
+_limits = [0.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 3.80531), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 

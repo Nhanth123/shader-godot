@@ -1,17 +1,19 @@
 [gd_scene load_steps=25 format=3 uid="uid://dvtker0pbo3bg"]
 
-[ext_resource type="Script" path="res://levels/shadervile/shadervile.gd" id="2_ca7ke"]
-[ext_resource type="Texture2D" uid="uid://dghhq2m5dgej8" path="res://tilemaps/TX Plant.png" id="3_65jgm"]
-[ext_resource type="Texture2D" uid="uid://ij33ejyttmrc" path="res://tilemaps/TX Props.png" id="4_0cl2f"]
-[ext_resource type="Texture2D" uid="uid://dtijludfsalbj" path="res://tilemaps/TX Shadow Plant.png" id="5_cjleq"]
-[ext_resource type="Texture2D" uid="uid://b8o4ubptc3lle" path="res://tilemaps/TX Shadow.png" id="6_pt6wq"]
-[ext_resource type="Texture2D" uid="uid://3o0dayrly0in" path="res://tilemaps/TX Struct.png" id="7_jmwni"]
-[ext_resource type="Texture2D" uid="uid://crp3kqvop825c" path="res://tilemaps/TX Tileset Grass.png" id="8_8lclo"]
-[ext_resource type="Texture2D" uid="uid://drrdp61fwsiji" path="res://tilemaps/TX Tileset Stone Ground.png" id="9_lqehs"]
-[ext_resource type="Texture2D" uid="uid://clw0pjx1hdwla" path="res://tilemaps/TX Tileset Wall.png" id="10_v8md3"]
-[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://characters/heroes/billy/light-texture.png" id="11_b1kin"]
-[ext_resource type="PackedScene" uid="uid://cufjsf2aoghsb" path="res://components/world_blood/world_blood.tscn" id="11_prbqv"]
-[ext_resource type="PackedScene" uid="uid://doc2etj1308nk" path="res://characters/heroes/billy/hero_billy.tscn" id="16_ntwcj"]
+[ext_resource type="Texture2D" uid="uid://dghhq2m5dgej8" path="res://gameplay/tilemaps/TX Plant.png" id="3_65jgm"]
+[ext_resource type="Texture2D" uid="uid://ij33ejyttmrc" path="res://gameplay/tilemaps/TX Props.png" id="4_0cl2f"]
+[ext_resource type="Texture2D" uid="uid://dtijludfsalbj" path="res://gameplay/tilemaps/TX Shadow Plant.png" id="5_cjleq"]
+[ext_resource type="Texture2D" uid="uid://b8o4ubptc3lle" path="res://gameplay/tilemaps/TX Shadow.png" id="6_pt6wq"]
+[ext_resource type="Texture2D" uid="uid://3o0dayrly0in" path="res://gameplay/tilemaps/TX Struct.png" id="7_jmwni"]
+[ext_resource type="Texture2D" uid="uid://crp3kqvop825c" path="res://gameplay/tilemaps/TX Tileset Grass.png" id="8_8lclo"]
+[ext_resource type="Texture2D" uid="uid://drrdp61fwsiji" path="res://gameplay/tilemaps/TX Tileset Stone Ground.png" id="9_lqehs"]
+[ext_resource type="Texture2D" uid="uid://clw0pjx1hdwla" path="res://gameplay/tilemaps/TX Tileset Wall.png" id="10_v8md3"]
+[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://gameplay/characters/heroes/billy/light-texture.png" id="11_b1kin"]
+[ext_resource type="PackedScene" uid="uid://cufjsf2aoghsb" path="res://gameplay/components/world_blood/world_blood.tscn" id="11_prbqv"]
+[ext_resource type="PackedScene" uid="uid://doc2etj1308nk" path="res://gameplay/characters/heroes/billy/hero_billy.tscn" id="16_ntwcj"]
+
+[sub_resource type="Resource" id="Resource_hu58w"]
+metadata/__load_path__ = "res://levels/shadervile/shadervile.gd"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohan2"]
 texture = ExtResource("3_65jgm")
@@ -123,7 +125,7 @@ adjustment_contrast = 0.83
 adjustment_saturation = 4.86
 
 [node name="Shadervile" type="Node2D"]
-script = ExtResource("2_ca7ke")
+script = SubResource("Resource_hu58w")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bfnr6")

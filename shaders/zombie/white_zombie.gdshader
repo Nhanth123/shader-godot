@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+#include "res://gameplay/shaders/debug_utils.gdshaderinc"
+
 group_uniforms zebra_zombie_tex;
 uniform sampler2D second_texture;
 group_uniforms;
@@ -11,7 +13,7 @@ uniform vec3 flash_color: source_color;
 group_uniforms;
 
 void vertex() {
-	VERTEX *= TIME / 10.0 ;
+	VERTEX *= sin(TIME);
 }
 
 
@@ -31,4 +33,9 @@ void apply_zebra_zombie_text(inout vec3 c, vec2 uv, sampler2D tex){
 void fragment() {
 	apply_zebra_zombie_text(COLOR.rgb, UV, TEXTURE);
 	flash_on_hit(COLOR.rgb);
+	
+	#ifdef DEBUG_MODE_ON
+	debug_draw_dots_at_vertices(UV, COLOR, TEXTURE);
+	#endif
+	
 }

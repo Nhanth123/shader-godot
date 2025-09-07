@@ -1,22 +1,23 @@
 [gd_scene load_steps=27 format=3 uid="uid://doc2etj1308nk"]
 
-[ext_resource type="Script" path="res://characters/heroes/billy/Hero.gd" id="1_fji5x"]
-[ext_resource type="Texture2D" uid="uid://bb3efp3pyrto6" path="res://characters/heroes/billy/test-square.png" id="2_6ue5p"]
-[ext_resource type="Texture2D" uid="uid://v4rbf8mdq1c1" path="res://characters/heroes/billy/hero.png" id="2_cumnm"]
-[ext_resource type="Texture2D" uid="uid://bpeee0taepbdw" path="res://characters/heroes/billy/bar.png" id="5_llhvx"]
-[ext_resource type="PackedScene" uid="uid://dnjvakx7j035q" path="res://components/mist/mist.tscn" id="6_2w0p2"]
-[ext_resource type="Texture2D" uid="uid://c66yn456wmmtt" path="res://characters/heroes/billy/health_bar/healthbar.png" id="6_ixo4p"]
-[ext_resource type="Texture2D" uid="uid://cqn3ybu8i5km5" path="res://characters/heroes/billy/button_circle/grenade.svg" id="7_567hk"]
-[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://characters/heroes/billy/light-texture.png" id="8_3j3cb"]
-[ext_resource type="Texture2D" uid="uid://datxfj471w2nj" path="res://characters/heroes/billy/fireshot.png" id="8_6tb7n"]
-[ext_resource type="Texture2D" uid="uid://bfo7yl10fqvfb" path="res://characters/heroes/billy/button_circle/grenade_pressed.svg" id="8_ja7rv"]
-[ext_resource type="Texture2D" uid="uid://dg7gkc0xdqscx" path="res://characters/heroes/billy/button_circle/glow-circle.svg" id="9_ugj7y"]
-[ext_resource type="Texture2D" uid="uid://cosa2ihadrvg7" path="res://characters/heroes/billy/button_circle/health-pack-button-icon.svg" id="10_pi1a7"]
-[ext_resource type="Texture2D" uid="uid://bw2ueaad78nh4" path="res://characters/heroes/billy/button_circle/rifle-button-icon.svg" id="11_h8oor"]
-[ext_resource type="Texture2D" uid="uid://b2tmsy45omgfx" path="res://characters/heroes/billy/hitpoints_100.png" id="15_mqlkb"]
-[ext_resource type="Texture2D" uid="uid://bf288y53irvof" path="res://characters/heroes/billy/hitpoints_50.png" id="16_bnvnb"]
-[ext_resource type="Texture2D" uid="uid://cjwguinwknk6m" path="res://characters/heroes/billy/hitpoints_1.png" id="17_oqr8j"]
-[ext_resource type="Script" path="res://characters/heroes/billy/Camera2D.gd" id="17_vdfvm"]
+[ext_resource type="Texture2D" uid="uid://bb3efp3pyrto6" path="res://gameplay/characters/heroes/billy/test-square.png" id="2_6ue5p"]
+[ext_resource type="Texture2D" uid="uid://v4rbf8mdq1c1" path="res://gameplay/characters/heroes/billy/hero.png" id="2_cumnm"]
+[ext_resource type="Texture2D" uid="uid://bpeee0taepbdw" path="res://gameplay/characters/heroes/billy/bar.png" id="5_llhvx"]
+[ext_resource type="PackedScene" uid="uid://dnjvakx7j035q" path="res://gameplay/components/mist/mist.tscn" id="6_2w0p2"]
+[ext_resource type="Texture2D" uid="uid://c66yn456wmmtt" path="res://gameplay/characters/heroes/billy/health_bar/healthbar.png" id="6_ixo4p"]
+[ext_resource type="Texture2D" uid="uid://cqn3ybu8i5km5" path="res://gameplay/characters/heroes/billy/button_circle/grenade.svg" id="7_567hk"]
+[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://gameplay/characters/heroes/billy/light-texture.png" id="8_3j3cb"]
+[ext_resource type="Texture2D" uid="uid://datxfj471w2nj" path="res://gameplay/characters/heroes/billy/fireshot.png" id="8_6tb7n"]
+[ext_resource type="Texture2D" uid="uid://bfo7yl10fqvfb" path="res://gameplay/characters/heroes/billy/button_circle/grenade_pressed.svg" id="8_ja7rv"]
+[ext_resource type="Texture2D" uid="uid://dg7gkc0xdqscx" path="res://gameplay/characters/heroes/billy/button_circle/glow-circle.svg" id="9_ugj7y"]
+[ext_resource type="Texture2D" uid="uid://cosa2ihadrvg7" path="res://gameplay/characters/heroes/billy/button_circle/health-pack-button-icon.svg" id="10_pi1a7"]
+[ext_resource type="Texture2D" uid="uid://bw2ueaad78nh4" path="res://gameplay/characters/heroes/billy/button_circle/rifle-button-icon.svg" id="11_h8oor"]
+[ext_resource type="Texture2D" uid="uid://b2tmsy45omgfx" path="res://gameplay/characters/heroes/billy/hitpoints_100.png" id="15_mqlkb"]
+[ext_resource type="Texture2D" uid="uid://bf288y53irvof" path="res://gameplay/characters/heroes/billy/hitpoints_50.png" id="16_bnvnb"]
+[ext_resource type="Texture2D" uid="uid://cjwguinwknk6m" path="res://gameplay/characters/heroes/billy/hitpoints_1.png" id="17_oqr8j"]
+
+[sub_resource type="Resource" id="Resource_2ed4d"]
+metadata/__load_path__ = "res://characters/heroes/billy/Hero.gd"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_61ks4"]
 radius = 73.171
@@ -68,13 +69,16 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rcjqx"]
 _data = {
-"IS_SHOOTING": SubResource("Animation_med64"),
-"RESET": SubResource("Animation_eebmt")
+&"IS_SHOOTING": SubResource("Animation_med64"),
+&"RESET": SubResource("Animation_eebmt")
 }
+
+[sub_resource type="Resource" id="Resource_hqi6g"]
+metadata/__load_path__ = "res://characters/heroes/billy/Camera2D.gd"
 
 [node name="Hero" type="CharacterBody2D"]
 z_index = 2
-script = ExtResource("1_fji5x")
+script = SubResource("Resource_2ed4d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -254,7 +258,7 @@ position_smoothing_speed = 20.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
-script = ExtResource("17_vdfvm")
+script = SubResource("Resource_hqi6g")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(31, -4)

@@ -1,7 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://nlow2gqujttq"]
 
-[ext_resource type="Texture2D" uid="uid://cglh04i410ajj" path="res://components/grenade/grenades_by_mtk.png" id="2_3d5y3"]
-[ext_resource type="Script" path="res://components/grenade/grenade.gd" id="3_h2e2e"]
+[ext_resource type="Texture2D" uid="uid://cglh04i410ajj" path="res://gameplay/components/grenade/grenades_by_mtk.png" id="2_3d5y3"]
+
+[sub_resource type="Resource" id="Resource_2ejqw"]
+metadata/__load_path__ = "res://components/grenade/grenade.gd"
 
 [sub_resource type="Animation" id="Animation_71em7"]
 length = 0.001
@@ -59,8 +61,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dw6ny"]
 _data = {
-"RESET": SubResource("Animation_71em7"),
-"THROW": SubResource("Animation_3yrxf")
+&"RESET": SubResource("Animation_71em7"),
+&"THROW": SubResource("Animation_3yrxf")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6tev"]
@@ -76,7 +78,7 @@ offset = Vector2(-7.272, -7.79016)
 hframes = 8
 vframes = 4
 frame = 17
-script = ExtResource("3_h2e2e")
+script = SubResource("Resource_2ejqw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

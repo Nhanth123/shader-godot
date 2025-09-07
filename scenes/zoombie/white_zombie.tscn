@@ -5,6 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iy0sw"]
 shader = ExtResource("1_hsych")
+shader_parameter/flash = 0.0
+shader_parameter/flash_color = Color(0, 0, 0, 1)
 
 [node name="WhiteZombie" type="Node2D"]
 

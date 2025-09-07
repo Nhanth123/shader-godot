@@ -1,11 +1,11 @@
 [gd_scene load_steps=23 format=3 uid="uid://d2f2s2t86achc"]
 
-[ext_resource type="Script" path="res://assets/zoombiegameplay/characters/enemies/zombie_walker/zombie.gd" id="1_er43f"]
+[ext_resource type="Script" uid="uid://cf7bpuvuu4jix" path="res://assets/zoombiegameplay/characters/enemies/zombie_walker/zombie.gd" id="1_er43f"]
 [ext_resource type="Texture2D" uid="uid://bq0xuwge1mgjp" path="res://gameplay/characters/enemies/zombie_walker/white-zombie.png" id="3_51gh1"]
-[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://assets/zoombiegameplay/characters/heroes/billy/blood.png" id="4_5e1gn"]
-[ext_resource type="Shader" path="res://shaders/zombie/white_zombie.gdshader" id="4_cp1pe"]
+[ext_resource type="Texture2D" uid="uid://bj6h8mhbp2jyb" path="res://gameplay/characters/heroes/billy/blood.png" id="4_5e1gn"]
+[ext_resource type="Shader" uid="uid://dg1gw7f40o4ur" path="res://shaders/zombie/white_zombie.gdshader" id="4_cp1pe"]
 [ext_resource type="Texture2D" uid="uid://bx5namjixotjt" path="res://gameplay/characters/enemies/zombie_walker/WhiteZombieNormalMap.png" id="6_sq1ov"]
-[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://assets/zoombiegameplay/characters/heroes/billy/light-texture.png" id="12_43yu3"]
+[ext_resource type="Texture2D" uid="uid://bkwejckklqbdh" path="res://gameplay/characters/heroes/billy/light-texture.png" id="12_43yu3"]
 
 [sub_resource type="Gradient" id="Gradient_u2ok4"]
 colors = PackedColorArray(0.337255, 0, 0.25098, 1, 0, 0, 0, 1)
@@ -51,8 +51,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qm74i"]
 _data = {
-"RESET": SubResource("Animation_7ugqe"),
-"flash_hit": SubResource("Animation_mp153")
+&"RESET": SubResource("Animation_7ugqe"),
+&"flash_hit": SubResource("Animation_mp153")
 }
 
 [sub_resource type="Gradient" id="Gradient_h3rrs"]
@@ -96,7 +96,7 @@ color_ramp = SubResource("GradientTexture1D_gcy0o")
 resource_local_to_scene = true
 shader = ExtResource("4_cp1pe")
 shader_parameter/flash = 0.0
-shader_parameter/flash_color = Color(0, 0.568627, 0.8, 1)
+shader_parameter/flash_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cfwnu"]
 diffuse_texture = ExtResource("3_51gh1")
@@ -130,18 +130,18 @@ texture = ExtResource("3_51gh1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qm74i")
+&"": SubResource("AnimationLibrary_qm74i")
 }
 
 [node name="BloodSmall" type="GPUParticles2D" parent="."]
 show_behind_parent = true
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_agvya")
 texture = ExtResource("4_5e1gn")
 one_shot = true
 explosiveness = 0.65
 randomness = 0.86
+process_material = SubResource("ParticleProcessMaterial_agvya")
 
 [node name="ZombieSprite2D" type="Sprite2D" parent="." groups=["zombie"]]
 z_index = 1
