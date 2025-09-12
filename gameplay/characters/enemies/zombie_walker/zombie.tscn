@@ -95,8 +95,6 @@ color_ramp = SubResource("GradientTexture1D_gcy0o")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w03rg"]
 resource_local_to_scene = true
 shader = ExtResource("4_cp1pe")
-shader_parameter/flash = 0.0
-shader_parameter/flash_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cfwnu"]
 diffuse_texture = ExtResource("3_51gh1")

@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 #include "res://gameplay/shaders/debug_utils.gdshaderinc"
+#include "res://gameplay/shaders/characters.gdshaderinc"
 
 group_uniforms zebra_zombie_tex;
 uniform sampler2D second_texture;
@@ -12,14 +13,19 @@ uniform vec3 flash_color: source_color;
 
 group_uniforms;
 
+void breath(inout vec2 v){
+	float m = 0.01;
+	float f = 4.0;
+	float breath_anim = sin(TIME * f) * 0.01;
+	v *= 1.0 + breath_anim;
+}
+
 void vertex() {
-	VERTEX *= sin(TIME);
+	breath(VERTEX);
 }
 
 
-void flash_on_hit(inout vec3 c) {
-	c.rgb = mix(c.rgb, flash_color.rgb, clamp(flash, 0.0, 0.8));
-}
+
 
 void apply_zebra_zombie_text(inout vec3 c, vec2 uv, sampler2D tex){
 	vec4 original_text = texture(tex, uv);
