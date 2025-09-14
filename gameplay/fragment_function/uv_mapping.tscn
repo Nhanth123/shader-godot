@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://w4rt2yhpv3c3"]
+
+[ext_resource type="Shader" uid="uid://cduaipsxcgond" path="res://gameplay/fragment_function/uv_mapping.gdshader" id="1_cwccy"]
+[ext_resource type="Texture2D" uid="uid://drtyf876rx425" path="res://icon.svg" id="1_w0fma"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cagti"]
+shader = ExtResource("1_cwccy")
+
+[node name="UvMapping" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cagti")
+position = Vector2(503, 191)
+texture = ExtResource("1_w0fma")
