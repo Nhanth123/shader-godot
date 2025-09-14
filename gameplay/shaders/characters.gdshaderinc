@@ -1,8 +1,7 @@
 
 
-void breath(inout vec2 v){
-	float m = 0.01;
-	float f = 4.0;
+void breath(inout vec2 v, float f){
+	float m = 0.02;
 	float breath_anim = sin(TIME * f) * 0.01;
 	v *= 1.0 + breath_anim;
 }
