@@ -9,6 +9,7 @@ shader = ExtResource("1_cwccy")
 [node name="UvMapping" type="Node2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
+texture_repeat = 2
 material = SubResource("ShaderMaterial_cagti")
 position = Vector2(503, 191)
 texture = ExtResource("1_w0fma")
